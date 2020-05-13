@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, Response, make_response, jsonify
+from flask import Flask, request, render_template, make_response, jsonify
 import os
 from . import decode
 from . import colorPicker
@@ -20,7 +20,10 @@ def colorPick():
         b64 = request.form['data']
         img = decode.dec(b64)
         data = colorPicker.mainFunction(img)
-        resp = Response(data)
+        body = {
+            'body': data
+        }
+        resp = make_response(jsonify(body))
         resp.headers['Access-Control-Allow-Origin'] = '*'
         return resp
     else:
