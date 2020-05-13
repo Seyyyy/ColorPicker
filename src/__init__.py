@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 import os
-import decode
-import colorPicker
+from . import decode
+from . import colorPicker
 
 app = Flask(__name__)
 
