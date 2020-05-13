@@ -12,6 +12,6 @@ RUN apt-get -y install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavfo
 # install python package
 RUN pip install numpy opencv-python flask
 
-EXPOSE 8080
+EXPOSE 3000
 
 ENV FLASK_APP /app/__init__.py

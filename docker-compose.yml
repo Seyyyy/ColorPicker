@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: 'Dockerfile'
     ports: 
-        - '8080:8080'
+        - '3000:3000'
     tty: true
     volumes:
       - ./src:/app
-    command: 'flask run -h 0.0.0.0 -p 8080'
+    command: 'flask run -h 0.0.0.0 -p 3000'
