@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Response, make_response, jsonify
 import os
 from . import decode
 from . import colorPicker
@@ -7,8 +7,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    name = "Hello Color Picker !!"
-    return name
+    text = {
+        'body': 'Hello Color Picker !!'
+    }
+    resp = make_response(jsonify(text))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 @app.route('/color', methods=['GET', 'POST'])
 def colorPick():
@@ -16,7 +20,9 @@ def colorPick():
         b64 = request.form['data']
         img = decode.dec(b64)
         data = colorPicker.mainFunction(img)
-        return data
+        resp = Response(data)
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
     else:
         return 'please base64 post'
 
