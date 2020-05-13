@@ -1,0 +1,12 @@
+version: '3'
+services:
+  development:
+    build:
+      context: .
+      dockerfile: 'Dockerfile_dev'
+    tty: true
+    ports: 
+        - '3000:3000'
+    volumes:
+      - ./src:/app
+    command: flask run -h 0.0.0.0 -p 3000
