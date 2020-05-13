@@ -18,7 +18,9 @@ libswscale-dev
 RUN pip install \
 numpy \
 opencv-python \
-flask
+flask \
+autopep8
+
 
 EXPOSE 3000
 COPY src /app
