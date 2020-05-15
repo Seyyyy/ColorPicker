@@ -58,7 +58,7 @@ class ColorPickerTest(unittest.TestCase):
 
     def test_hueTojson(self):
         testcase = np.array([0,1,2,3,4,5,6,7,8,9,10,11])
-        hueDict = {
+        expected = {
             'red':0,
             'red-yellow':1,
             'yellow':2,
@@ -72,8 +72,46 @@ class ColorPickerTest(unittest.TestCase):
             'purple':10,
             'purple-red':11,
         }
-        self.assertEqual(colorPicker.hueTojson(testcase), hueDict)
+        self.assertEqual(colorPicker.hueTojson(testcase), expected)
 
+
+    def test_saturationTojson(self):
+        testcase = np.array([0,1,2,3,4,5,6,7,8,9,10,11])
+        expected = {
+            's0': 0,
+            's1': 1,
+            's2': 2,
+            's3': 3,
+            's4': 4,
+            's5': 5,
+            's6': 6,
+            's7': 7,
+            's8': 8,
+            's9': 9,
+            's10': 10,
+            's10': 11,
+        }
+        self.assertEqual(colorPicker.saturationTojson(testcase), expected)
+
+
+    def test_valueTojson(self):
+        testcase = np.array([0,1,2,3,4,5,6,7,8,9,10,11])
+        expected = {
+            'v0': 0,
+            'v1': 1,
+            'v2': 2,
+            'v3': 3,
+            'v4': 4,
+            'v5': 5,
+            'v6': 6,
+            'v7': 7,
+            'v8': 8,
+            'v9': 9,
+            'v10': 10,
+            'v11': 11,
+        } 
+        self.assertEqual(colorPicker.valueTojson(testcase), expected)
+        
 
 if __name__ == '__main__':
     unittest.main()
