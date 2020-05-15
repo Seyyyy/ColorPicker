@@ -20,10 +20,7 @@ def colorPick():
         b64 = request.form['data']
         img = decode.dec(b64)
         data = colorPicker.mainFunction(img)
-        body = {
-            'body': data
-        }
-        resp = make_response(jsonify(body))
+        resp = make_response(jsonify(data))
         resp.headers['Access-Control-Allow-Origin'] = '*'
         return resp
     else:
