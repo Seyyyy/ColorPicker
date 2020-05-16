@@ -132,4 +132,4 @@ def mainFunction(imageFileName):
             'value': valueEntropy
         }
     }
-    return json.dumps(colorDict)
+    return colorDict

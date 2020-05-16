@@ -22,6 +22,7 @@ def colorPick():
         data = colorPicker.mainFunction(img)
         resp = make_response(jsonify(data))
         resp.headers['Access-Control-Allow-Origin'] = '*'
+        resp.headers['Content-Type'] = 'application/json'
         return resp
     else:
         return 'please base64 post'
