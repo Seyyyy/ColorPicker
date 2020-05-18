@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, make_response, jsonify
 import os
 from . import decode
 from . import colorPicker
+import ast
 
 app = Flask(__name__)
 
@@ -17,7 +18,13 @@ def hello():
 @app.route('/color', methods=['GET', 'POST'])
 def colorPick():
     if request.method == 'POST':
-        b64 = request.form['data']
+        # byteデータでbody要素を受け取ってdict型に変更しbodyの中のindexがbase64のデータを受け取る
+        byteData = request.get_data()
+        byteData = byteData.decode()
+        dic = ast.literal_eval(byteData)
+        dic = dic['base64']
+
+        b64 = dic
         img = decode.dec(b64)
         data = colorPicker.mainFunction(img)
         resp = make_response(jsonify(data))
