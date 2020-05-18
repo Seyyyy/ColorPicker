@@ -58,58 +58,201 @@ class ColorPickerTest(unittest.TestCase):
 
     def test_hueTojson(self):
         testcase = np.array([0,1,2,3,4,5,6,7,8,9,10,11])
-        expected = {
-            'red':0,
-            'red-yellow':1,
-            'yellow':2,
-            'yellow-green':3,
-            'green':4,
-            'green-cyan':5,
-            'cyan':6,
-            'cyan-blue':7,
-            'blue':8,
-            'blue-purple':9,
-            'purple':10,
-            'purple-red':11,
-        }
+        expected = [
+            {
+                'color': 'red',
+                'hex': '#f04646',
+                'ratio': 0
+            },
+            {
+                'color': 'red-yellow',
+                'hex': '#f09b46',
+                'ratio': 1
+            },
+            {
+                'color': 'yellow',
+                'hex': '#f0f046',
+                'ratio': 2
+            },
+            {
+                'color': 'yellow-green',
+                'hex': '#9bf046',
+                'ratio': 3
+            },
+            {
+                'color': 'green',
+                'hex': '#46f046',
+                'ratio': 4
+            },
+            {
+                'color': 'green-cyan',
+                'hex': '#46f09b',
+                'ratio': 5
+            },
+            {
+                'color': 'cyan',
+                'hex': '#46f0f0',
+                'ratio': 6
+            },
+            {
+                'color': 'cyan-blue',
+                'hex': '#469bf0',
+                'ratio': 7
+            },
+            {
+                'color': 'blue',
+                'hex': '#4646f0',
+                'ratio': 8
+            },
+            {
+                'color': 'blue-purple',
+                'hex': '#9b46f0',
+                'ratio': 9
+            },
+            {
+                'color': 'purple',
+                'hex': '#f046f0',
+                'ratio': 10
+            },
+            {
+                'color': 'purple-red',
+                'hex': '#f0469b',
+                'ratio': 11
+            },
+        ]
         self.assertEqual(colorPicker.hueTojson(testcase), expected)
-
 
     def test_saturationTojson(self):
         testcase = np.array([0,1,2,3,4,5,6,7,8,9,10,11])
-        expected = {
-            's0': 0,
-            's1': 1,
-            's2': 2,
-            's3': 3,
-            's4': 4,
-            's5': 5,
-            's6': 6,
-            's7': 7,
-            's8': 8,
-            's9': 9,
-            's10': 10,
-            's10': 11,
-        }
+        expected = [
+            {
+                'color': 's0',
+                'hex': '#ffffff',
+                'ratio': 0
+            },
+            {
+                'color': 's1',
+                'hex': '#ffebeb',
+                'ratio': 1
+            },
+            {
+                'color': 's2',
+                'hex': '#ffd6d6',
+                'ratio': 2
+            },
+            {
+                'color': 's3',
+                'hex': '#ffc2c2',
+                'ratio': 3
+            },
+            {
+                'color': 's4',
+                'hex': '#ffadad',
+                'ratio': 4
+            },
+            {
+                'color': 's5',
+                'hex': '#ff9999',
+                'ratio': 5
+            },
+            {
+                'color': 's6',
+                'hex': '#ff8585',
+                'ratio': 6
+            },
+            {
+                'color': 's7',
+                'hex': '#ff7070',
+                'ratio': 7
+            },
+            {
+                'color': 's8',
+                'hex': '#ff5c5c',
+                'ratio': 8
+            },
+            {
+                'color': 's9',
+                'hex': '#ff4747',
+                'ratio': 9
+            },
+            {
+                'color': 's10',
+                'hex': '#ff3333',
+                'ratio': 10
+            },
+            {
+                'color': 's11',
+                'hex': '#ff1f1f',
+                'ratio': 11
+            },
+        ]
         self.assertEqual(colorPicker.saturationTojson(testcase), expected)
 
 
     def test_valueTojson(self):
         testcase = np.array([0,1,2,3,4,5,6,7,8,9,10,11])
-        expected = {
-            'v0': 0,
-            'v1': 1,
-            'v2': 2,
-            'v3': 3,
-            'v4': 4,
-            'v5': 5,
-            'v6': 6,
-            'v7': 7,
-            'v8': 8,
-            'v9': 9,
-            'v10': 10,
-            'v11': 11,
-        } 
+        expected = [
+            {
+                'color': 'v0',
+                'hex': '#000000',
+                'ratio': 0
+            },
+            {
+                'color': 'v1',
+                'hex': '#141414',
+                'ratio': 1
+            },
+            {
+                'color': 'v2',
+                'hex': '#292929',
+                'ratio': 2
+            },
+            {
+                'color': 'v3',
+                'hex': '#3d3d3d',
+                'ratio': 3
+            },
+            {
+                'color': 'v4',
+                'hex': '#525252',
+                'ratio': 4
+            },
+            {
+                'color': 'v5',
+                'hex': '#666666',
+                'ratio': 5
+            },
+            {
+                'color': 'v6',
+                'hex': '#7a7a7a',
+                'ratio': 6
+            },
+            {
+                'color': 'v7',
+                'hex': '#8f8f8f',
+                'ratio': 7
+            },
+            {
+                'color': 'v8',
+                'hex': '#a3a3a3',
+                'ratio': 8
+            },
+            {
+                'color': 'v9',
+                'hex': '#b8b8b8',
+                'ratio': 9
+            },
+            {
+                'color': 'v10',
+                'hex': '#cccccc',
+                'ratio': 10
+            },
+            {
+                'color': 'v11',
+                'hex': '#e0e0e0',
+                'ratio': 11
+            },
+        ]
         self.assertEqual(colorPicker.valueTojson(testcase), expected)
         
 

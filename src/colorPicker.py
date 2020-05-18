@@ -52,55 +52,200 @@ def getEntropy(ratioNdarray):
         H -= ratio * math.log2(ratio)
     return H
 
+
 def hueTojson(hueNdarray):
-    hueDict = {
-        'red':hueNdarray[0],
-        'red-yellow':hueNdarray[1],
-        'yellow':hueNdarray[2],
-        'yellow-green':hueNdarray[3],
-        'green':hueNdarray[4],
-        'green-cyan':hueNdarray[5],
-        'cyan':hueNdarray[6],
-        'cyan-blue':hueNdarray[7],
-        'blue':hueNdarray[8],
-        'blue-purple':hueNdarray[9],
-        'purple':hueNdarray[10],
-        'purple-red':hueNdarray[11],
-    }
+    hueDict = [
+            {
+                'color': 'red',
+                'hex': '#f04646',
+                'ratio': hueNdarray[0]
+            },
+            {
+                'color': 'red-yellow',
+                'hex': '#f09b46',
+                'ratio': hueNdarray[1]
+            },
+            {
+                'color': 'yellow',
+                'hex': '#f0f046',
+                'ratio': hueNdarray[2]
+            },
+            {
+                'color': 'yellow-green',
+                'hex': '#9bf046',
+                'ratio': hueNdarray[3]
+            },
+            {
+                'color': 'green',
+                'hex': '#46f046',
+                'ratio': hueNdarray[4]
+            },
+            {
+                'color': 'green-cyan',
+                'hex': '#46f09b',
+                'ratio': hueNdarray[5]
+            },
+            {
+                'color': 'cyan',
+                'hex': '#46f0f0',
+                'ratio': hueNdarray[6]
+            },
+            {
+                'color': 'cyan-blue',
+                'hex': '#469bf0',
+                'ratio': hueNdarray[7]
+            },
+            {
+                'color': 'blue',
+                'hex': '#4646f0',
+                'ratio': hueNdarray[8]
+            },
+            {
+                'color': 'blue-purple',
+                'hex': '#9b46f0',
+                'ratio': hueNdarray[9]
+            },
+            {
+                'color': 'purple',
+                'hex': '#f046f0',
+                'ratio': hueNdarray[10]
+            },
+            {
+                'color': 'purple-red',
+                'hex': '#f0469b',
+                'ratio': hueNdarray[11]
+            },
+        ]
     return hueDict
 
 def saturationTojson(satuNdarray):
-    satuDict = {
-        's0': satuNdarray[0],
-        's1': satuNdarray[1],
-        's2': satuNdarray[2],
-        's3': satuNdarray[3],
-        's4': satuNdarray[4],
-        's5': satuNdarray[5],
-        's6': satuNdarray[6],
-        's7': satuNdarray[7],
-        's8': satuNdarray[8],
-        's9': satuNdarray[9],
-        's10': satuNdarray[10],
-        's10': satuNdarray[11],
-    }
+    satuDict = [
+            {
+                'color': 's0',
+                'hex': '#ffffff',
+                'ratio': satuNdarray[0]
+            },
+            {
+                'color': 's1',
+                'hex': '#ffebeb',
+                'ratio': satuNdarray[1]
+            },
+            {
+                'color': 's2',
+                'hex': '#ffd6d6',
+                'ratio': satuNdarray[2]
+            },
+            {
+                'color': 's3',
+                'hex': '#ffc2c2',
+                'ratio': satuNdarray[3]
+            },
+            {
+                'color': 's4',
+                'hex': '#ffadad',
+                'ratio': satuNdarray[4]
+            },
+            {
+                'color': 's5',
+                'hex': '#ff9999',
+                'ratio': satuNdarray[5]
+            },
+            {
+                'color': 's6',
+                'hex': '#ff8585',
+                'ratio': satuNdarray[6]
+            },
+            {
+                'color': 's7',
+                'hex': '#ff7070',
+                'ratio': satuNdarray[7]
+            },
+            {
+                'color': 's8',
+                'hex': '#ff5c5c',
+                'ratio': satuNdarray[8]
+            },
+            {
+                'color': 's9',
+                'hex': '#ff4747',
+                'ratio': satuNdarray[9]
+            },
+            {
+                'color': 's10',
+                'hex': '#ff3333',
+                'ratio': satuNdarray[10]
+            },
+            {
+                'color': 's11',
+                'hex': '#ff1f1f',
+                'ratio': satuNdarray[11]
+            },
+        ]
     return satuDict
 
 def valueTojson(valueNdarray):
-    valueDict = {
-        'v0': valueNdarray[0],
-        'v1': valueNdarray[1],
-        'v2': valueNdarray[2],
-        'v3': valueNdarray[3],
-        'v4': valueNdarray[4],
-        'v5': valueNdarray[5],
-        'v6': valueNdarray[6],
-        'v7': valueNdarray[7],
-        'v8': valueNdarray[8],
-        'v9': valueNdarray[9],
-        'v10': valueNdarray[10],
-        'v11': valueNdarray[11],
-    } 
+    valueDict = [
+            {
+                'color': 'v0',
+                'hex': '#000000',
+                'ratio': valueNdarray[0]
+            },
+            {
+                'color': 'v1',
+                'hex': '#141414',
+                'ratio': valueNdarray[1]
+            },
+            {
+                'color': 'v2',
+                'hex': '#292929',
+                'ratio': valueNdarray[2]
+            },
+            {
+                'color': 'v3',
+                'hex': '#3d3d3d',
+                'ratio': valueNdarray[3]
+            },
+            {
+                'color': 'v4',
+                'hex': '#525252',
+                'ratio': valueNdarray[4]
+            },
+            {
+                'color': 'v5',
+                'hex': '#666666',
+                'ratio': valueNdarray[5]
+            },
+            {
+                'color': 'v6',
+                'hex': '#7a7a7a',
+                'ratio': valueNdarray[6]
+            },
+            {
+                'color': 'v7',
+                'hex': '#8f8f8f',
+                'ratio': valueNdarray[7]
+            },
+            {
+                'color': 'v8',
+                'hex': '#a3a3a3',
+                'ratio': valueNdarray[8]
+            },
+            {
+                'color': 'v9',
+                'hex': '#b8b8b8',
+                'ratio': valueNdarray[9]
+            },
+            {
+                'color': 'v10',
+                'hex': '#cccccc',
+                'ratio': valueNdarray[10]
+            },
+            {
+                'color': 'v11',
+                'hex': '#e0e0e0',
+                'ratio': valueNdarray[11]
+            },
+        ]
     return valueDict
 
 # とりあえず繰り返し処理しやすいようにまとめる
