@@ -40,7 +40,7 @@ def colorPick():
         resp = make_response()
         resp.headers['Access-Control-Allow-Origin'] = '*'
         resp.headers['Access-Control-Allow-Headers'] = '*'
-        resp.headers['Origin'] = 'http:0.0.0.0:8080'
+        resp.headers['Origin'] = '*'
         return resp
     else:
         return 'please base64 post'
