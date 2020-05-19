@@ -15,8 +15,9 @@ def hello():
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
-@app.route('/color', methods=['GET', 'POST'])
+@app.route('/color', methods=['GET', 'POST', 'OPTIONS'])
 def colorPick():
+    print(request.headers)
     if request.method == 'POST':
         # byteデータでbody要素を受け取ってdict型に変更しbodyの中のindexがbase64のデータを受け取る
         byteData = request.get_data()
@@ -29,7 +30,17 @@ def colorPick():
         data = colorPicker.mainFunction(img)
         resp = make_response(jsonify(data))
         resp.headers['Access-Control-Allow-Origin'] = '*'
+        resp.headers['Access-Control-Allow-Headers'] = '*'
+        resp.headers['Access-Control-Allow-Methods'] = '*'
+        resp.headers['Access-Control-Max-Age'] = 86400
         resp.headers['Content-Type'] = 'application/json'
+        return resp
+    elif request.method == 'OPTIONS':
+        # make priflight request
+        resp = make_response()
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        resp.headers['Access-Control-Allow-Headers'] = '*'
+        resp.headers['Origin'] = 'http:0.0.0.0:8080'
         return resp
     else:
         return 'please base64 post'
