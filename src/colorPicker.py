@@ -3,6 +3,7 @@ import cv2
 import math
 import json
 
+
 # np.uniqueで使用されるカラーリストを抽出するための前処理
 def imgNdarray2ColorNdarray(imgNdarray):
     img_array = []
@@ -12,6 +13,7 @@ def imgNdarray2ColorNdarray(imgNdarray):
     img_array = np.array(img_array)
     return img_array
 
+
 # hsvだと色数が多すぎるので扱いやすくするために抽象化をする
 def abstraction(imgNdarray):
     img_array = []
@@ -19,6 +21,7 @@ def abstraction(imgNdarray):
     img_array = np.floor(imgNdarray / abstParam)
     img_array = img_array.astype(np.int64)
     return img_array
+
 
 # とっても重い処理(約３秒くらい)uniqueが重たいたぶん
 # 色相、彩度、明度ごとに割合を導出する
@@ -32,9 +35,11 @@ def getColorFeature(uniqueColorNdarray):
     ratio = [hueRatio, satuRatio, valueRatio]
     return ratio
 
+
 def colorRatio(colorCountNdarray):
     ratio = np.round(colorCountNdarray / colorCountNdarray.sum(), 3)
     return ratio
+
 
 # csvで扱いやすくするために列と対応させるように０で埋める
 def fillZero(colorKindNdarray, colorRatioNdarray):
@@ -43,6 +48,7 @@ def fillZero(colorKindNdarray, colorRatioNdarray):
     for i, colorNumber in enumerate(colorKindNdarray):
         ratioArray[colorNumber] = colorRatioNdarray[i]
     return ratioArray
+
 
 def getEntropy(ratioNdarray):
     H = 0
@@ -118,6 +124,7 @@ def hueTojson(hueNdarray):
         ]
     return hueDict
 
+
 def saturationTojson(satuNdarray):
     satuDict = [
             {
@@ -183,6 +190,7 @@ def saturationTojson(satuNdarray):
         ]
     return satuDict
 
+
 def valueTojson(valueNdarray):
     valueDict = [
             {
@@ -247,6 +255,7 @@ def valueTojson(valueNdarray):
             },
         ]
     return valueDict
+
 
 # とりあえず繰り返し処理しやすいようにまとめる
 def mainFunction(imageFileName):
