@@ -1,12 +1,12 @@
 version: 2.1
 jobs:
-    # build:
-    #     machine: true
-    #     steps:
-    #         - checkout
-    #         - run:
-    #             name: docker-compose build
-    #             command: docker-compose build
+    build:
+        machine: true
+        steps:
+            - checkout
+            - run:
+                name: docker-compose build
+                command: docker-compose build
     test:
         docker: 
             - image: circleci/python:3.8.2
@@ -15,3 +15,10 @@ jobs:
             - run:
                 name: unit test
                 command: python3 src/__colorPicker.test.py
+
+workflows:
+    version: 2
+    test:
+        jobs:
+            - build
+            - test
