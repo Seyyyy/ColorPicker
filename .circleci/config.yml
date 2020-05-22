@@ -20,9 +20,9 @@ jobs:
             - run:
                 name: deploy
                 command: |
-                docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
-                heroku container:push --app ${HEROKU_APP_NAME} web
-                heroku container:release web
+                    docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+                    heroku container:push --app ${HEROKU_APP_NAME} web
+                    heroku container:release web
 
 workflows:
     version: 2
