@@ -1,12 +1,12 @@
 version: 2.1
 jobs:
-    build:
-        machine: true
-        steps:
-            - checkout
-            - run:
-                name: docker-compose build
-                command: docker-compose build
+    # build:
+    #     machine: true
+    #     steps:
+    #         - checkout
+    #         - run:
+    #             name: docker-compose build
+    #             command: docker-compose build
     test:
         docker: 
             - image: circleci/python:3.8.2
