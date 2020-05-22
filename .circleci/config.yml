@@ -1,18 +1,32 @@
 version: 2.1
+orbs:
+    heroku: circleci/heroku@1.0.0
 jobs:
-    build:
-        machine: true
-        steps:
+    # build:
+    #     machine: true
+    #     steps:
+    #         - checkout
+    #         - run:
+    #             name: docker-compose build
+    #             command: docker-compose build
+    #         - run:
+    #             name: unit test
+    #             command: docker-compose up test
+    deploy:
+        executor: heroku/default
+        steps: 
             - checkout
+            - heroku/install
             - run:
-                name: docker-compose build
-                command: docker-compose build
-            - run:
-                name: unit test
-                command: docker-compose up test
+                name: deploy
+                command: |
+                docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+                heroku container:push --app ${HEROKU_APP_NAME} web
+                heroku container:release web
 
 workflows:
     version: 2
     test:
         jobs:
-            - build
+            # - build
+            - deploy
