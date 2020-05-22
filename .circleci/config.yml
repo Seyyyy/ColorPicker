@@ -7,9 +7,6 @@ jobs:
             - run:
                 name: docker-compose build
                 command: docker-compose build
-            - run: 
-                name: docker-compose up
-                command: docker-compose up development
             - run:
                 name: unit test
                 command: docker-compose up test
