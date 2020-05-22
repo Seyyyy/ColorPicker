@@ -13,7 +13,8 @@ jobs:
     #             name: unit test
     #             command: docker-compose up test
     deploy:
-        executor: heroku/default
+        machine:
+            image: circleci/classic:edge
         steps: 
             - checkout
             - heroku/install
