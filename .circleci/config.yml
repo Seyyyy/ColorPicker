@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-    heroku: circleci/heroku@1.0.0
 jobs:
     # build:
     #     machine: true
@@ -13,15 +11,20 @@ jobs:
     #             name: unit test
     #             command: docker-compose up test
     deploy:
-        machine:
-            image: circleci/classic:edge
+        machine: true
         steps: 
             - checkout
-            - heroku/install
             - run:
-                name: deploy
+                name: login
+                command: docker login --username=$HEROKU_USER_NAME --password=$HEROKU_API_KEY registry.heroku.com
+            - run:
+                name: heorku setup
                 command: |
-                    docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+                    chmod +x .circleci/setup-heroku.sh
+                    .circleci/setup-heroku.sh
+            - run: 
+                name: deploy heroku
+                command: |
                     heroku container:push --app ${HEROKU_APP_NAME} web
                     heroku container:release --app ${HEROKU_APP_NAME} web
 
