@@ -4,13 +4,13 @@ import math
 import json
 
 
-# np.uniqueで使用されるカラーリストを抽出するための前処理
 def imgNdarray2ColorNdarray(imgNdarray):
+    '''np.uniqueで使用されるカラーリストを抽出するための前処理'''
     return np.array([row for cell in imgNdarray for row in cell])
 
 
-# hsvだと色数が多すぎるので扱いやすくするために抽象化をする
 def abstraction(imgNdarray):
+    '''hsvだと色数が多すぎるので扱いやすくするために抽象化をする'''
     img_array = []
     abstParam = [15, 21.33, 21.33]
     img_array = np.floor(imgNdarray / abstParam)
@@ -18,9 +18,11 @@ def abstraction(imgNdarray):
     return img_array
 
 
-# とっても重い処理(約３秒くらい)uniqueが重たいたぶん
-# 色相、彩度、明度ごとに割合を導出する
 def getColorFeature(uniqueColorNdarray):
+    '''
+    とっても重い処理(約３秒くらい)uniqueが重たいたぶん
+    色相、彩度、明度ごとに割合を導出する
+    '''
     hue, hueCount = np.unique(uniqueColorNdarray[0], return_counts=True)
     saturation, satuCount = np.unique(uniqueColorNdarray[1], return_counts=True)
     value, valueCount = np.unique(uniqueColorNdarray[2], return_counts=True)
@@ -36,8 +38,8 @@ def colorRatio(colorCountNdarray):
     return ratio
 
 
-# csvで扱いやすくするために列と対応させるように０で埋める
 def fillZero(colorKindNdarray, colorRatioNdarray):
+    '''csvで扱いやすくするために列と対応させるように０で埋める'''
     abstractionNumber = 12
     ratioArray = np.zeros(abstractionNumber)
     for i, colorNumber in enumerate(colorKindNdarray):
@@ -252,8 +254,8 @@ def valueTojson(valueNdarray):
     return valueDict
 
 
-# とりあえず繰り返し処理しやすいようにまとめる
 def mainFunction(imageFileName):
+    '''とりあえず繰り返し処理しやすいようにまとめる'''
     # img = cv2.imread(imageFileName, cv2.IMREAD_COLOR)
     img = cv2.cvtColor(imageFileName, cv2.COLOR_BGR2HSV)
     img_array = imgNdarray2ColorNdarray(img)
