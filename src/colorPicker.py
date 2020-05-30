@@ -6,12 +6,7 @@ import json
 
 # np.uniqueで使用されるカラーリストを抽出するための前処理
 def imgNdarray2ColorNdarray(imgNdarray):
-    img_array = []
-    for cell in imgNdarray:
-        for row in cell:
-            img_array.append(row)
-    img_array = np.array(img_array)
-    return img_array
+    return np.array([row for cell in imgNdarray for row in cell])
 
 
 # hsvだと色数が多すぎるので扱いやすくするために抽象化をする
