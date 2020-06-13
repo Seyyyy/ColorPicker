@@ -14,8 +14,7 @@ def abstraction(imgNdarray):
     img_array = []
     abstParam = [15, 21.33, 21.33]
     img_array = np.floor(imgNdarray / abstParam)
-    img_array = img_array.astype(np.int64)
-    return img_array
+    return img_array.astype(np.int64)
 
 
 def getColorFeature(uniqueColorNdarray):
@@ -29,13 +28,11 @@ def getColorFeature(uniqueColorNdarray):
     hueRatio = fillZero(hue, colorRatio(hueCount))
     satuRatio = fillZero(saturation, colorRatio(satuCount))
     valueRatio = fillZero(value, colorRatio(valueCount))
-    ratio = [hueRatio, satuRatio, valueRatio]
-    return ratio
+    return [hueRatio, satuRatio, valueRatio]
 
 
 def colorRatio(colorCountNdarray):
-    ratio = np.round(colorCountNdarray / colorCountNdarray.sum(), 3)
-    return ratio
+    return np.round(colorCountNdarray / colorCountNdarray.sum(), 3)
 
 
 def fillZero(colorKindNdarray, colorRatioNdarray):
